@@ -8,7 +8,8 @@ import (
 	"github.com/graphql-go/handler"
 )
 
-var queryType = graphql.NewObject(graphql.ObjectConfig{
+// The query type defines the Top-Level API types.
+var queryTopLevelTypes = graphql.NewObject(graphql.ObjectConfig{
 	Name: "Query",
 	Fields: graphql.Fields{
 		"hello": &graphql.Field{
@@ -20,8 +21,10 @@ var queryType = graphql.NewObject(graphql.ObjectConfig{
 	},
 })
 
+// The schema defines the query schema and the mutation
+// (optional, not included here) schema.
 var schema, _ = graphql.NewSchema(graphql.SchemaConfig{
-	Query: queryType,
+	Query: queryTopLevelTypes,
 })
 
 func main() {
